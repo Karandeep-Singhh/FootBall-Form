@@ -70,7 +70,7 @@ function submitRequest(ev){
         //        "phoneCode" : "+"+phoneCode.options[phoneCode.selectedIndex].innerHTML.replace(/[^0-9]+/g,""),
 
         var request = new XMLHttpRequest();
-        var url = "/hello";
+        var url = "/goal";
         request.open('post', url);
         request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
         var status = request.status;
@@ -114,9 +114,8 @@ function updateRequest(ev) {
             "city" : city.selectedIndex
         };
         //        "phoneCode" : "+"+phoneCode.options[phoneCode.selectedIndex].innerHTML.replace(/[^0-9]+/g,""),
-
         var request = new XMLHttpRequest();
-        var url = "/updation";
+        var url = "/goal";
         request.open('put', url);
         request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
         var status = request.status;
