@@ -1,4 +1,4 @@
-package servlet;
+package footballFunctionality;
 
 public class Player {
     private String userName;

@@ -1,4 +1,4 @@
-package servlet;
+package footballFunctionality;
 
 import com.google.gson.Gson;
 
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
         name = "MyServlet", 
         urlPatterns = {"/goal"}
     )
-public class FootBall extends HttpServlet {
+public class FootBallServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
