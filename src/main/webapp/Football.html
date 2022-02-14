@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="football">
+        <h1 align="center">Football registeration form</h1>
+        <div class="container">
+            
+            <form id = "form1" method="post">
+                <div id="s1">
+                    
+                    <!-- Username -->
+                    <div class = "fieldText user">
+                        <label for="usrname"><b>USER NAME<sup class="astr">*</sup></b> 
+                            <span id = "invalidate" style="color:red;margin-left: 10px;"></span>
+                            <span id = "userError" style="float: right;">
+                                <button class = "retBtn" style="border-radius: 3px;">Retrieve</button>
+                            </span>
+                        </label>
+                        <input type="text" class="valid" id="usrname" value ="" placeholder = "User Name">
+    
+                    </div>
+
+                    <!-- FirstName -->
+                    <div class = "fieldText name">
+                        <label for="fname"><b>FIRST NAME<sup class="astr">*</sup></b>
+                            <span id = "fnameError" style="float: right; color:red">
+                            </span>
+                        </label>
+                        <input type="text" class="valid" id="fname" value ="" placeholder = "What is your first name?">
+                    </div>
+
+                    <!-- LastName -->
+                    <div class="fieldText lastName">
+                        <label for="lname"><b>LAST NAME</b>
+                            <span id = "lnameError" style="float: right; color:red">
+                            </span>                        
+                        </label>
+                        <input type="text" id ="lname" value ="" placeholder="What is your last name?">
+                    </div>
+                </div>
+                
+                <!------------------------------------->
+                
+                <div id="s2">
+                    
+                    <!-- Phone Number -->
+                    <div class="fieldText phoneNum">
+                        <div>
+                            <label for="phone"><b>PHONE NUMBER<sup class="astr">*</sup></b>
+                            <span id = "phoneError" style="float: right; color:red">
+                            </span>
+                        </label>
+                        </div>
+                        <div class ="fieldPhone">
+                            <span class="iconPhoto">
+                            </span>
+                            <span class="cntrycode" style="margin-right : 10px">
+                                <select id="ccode" class="valid" style="width:100%; padding: none">
+                                    <option value="" >Select Country Code</option>
+                                    <option value="ind" selected="selected">India(+91)</option>
+                                    <option value="nor">Norway(+47)</option>
+                                    <option value="den">Denmark(+45)</option>
+                            </select>
+                            </span>
+                            <span class="phField">
+                                <input type="text" class="valid" id ="phone" value ="" placeholder="What is the best # to reach you?">
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="fieldText email">
+                        <div class="mail_checkbox">
+                            <div>
+                                <span>
+                                    <label id="mailToggle" for="mail"><b>EMAIL<sup class="astr">*</sup></b>
+                                        <span id = "emailError" style="color:red;margin-left: 10px;"></span>
+                                    </label>
+                                </span>
+                            </div>
+                            <div>
+                                <label style="float: right;" for ="mailEnable" class="switch">
+                                <input type="checkbox" class="valid" id="mailEnable" name="mailEnable">
+                                <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="email_field">
+                            <input type="email" class="valid" value ="" id ="mail" disabled="true" placeholder="What is you e-mail address?">
+                        </div>
+                    </div>
+                    
+                    <!-- AgeGroup -->
+                    <div class="fieldText age">
+                        <label for="ages"><b>AGE GROUP<sup class="astr">*</sup></b>
+                        </label>
+                        <select id="ages" class="valid" name = "ageGroup">
+                            <option value = "default" selected>Select Age Group</option>
+                            <option value="18-24">18-24</option>
+                            <option value="25-30">25-30</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!------------------------------------->
+                <div id="s3">
+
+                    <!-- Teams -->
+                    <div class="fieldText team">
+                        <label for="teamName"><b>DESIRED TEAM<sup class="astr">*</sup></b>
+                        </label>
+                        <div id="teamName">
+                            <input type="radio" class="valid" id="opt1" name="sTeam">
+                            <label for="opt1"><b>CHELSEA</b></label>
+                            <input type="radio" class="valid" id="opt2" name="sTeam">
+                            <label for="opt2"><b>MANCHESTER</b></label>
+                            <input type="radio" class="valid" id="opt3" name="sTeam">
+                            <label for="opt3"><b>LIVERPOOL</b></label>
+                            <input type="radio" class="valid" id="opt4" name="sTeam">
+                            <label for="opt4"><b>BARCELONA</b></label>
+                        </div>
+                        <p id="pForTeam" style="color: red; margin: auto; width: 75%;"></p>
+                    </div>
+
+                    <!-- Position -->
+                    <div class="fieldText position">
+                        <label for="pos"><b>DESIRED POSITION<sup class="astr">*</sup></b>
+                        </label>
+                        <div id="pos">
+                            <input type="checkbox" class="valid" id="cb1" name="goalKeeper">
+                            <label for="cb1"><b>GOAL KEEPER</b></label>
+                            <input type="checkbox" class="valid" id="cb2" name="offensive">
+                            <label for="cb2"><b>OFFENSIVE</b></label>
+                            <input type="checkbox" class="valid" id="cb3" name="defence">
+                            <label for="cb3"><b>DEFENCE</b></label>
+                            <input type="checkbox" class="valid" id="cb4" name="reciever">
+                            <label for="cb4"><b>RECIEVER</b></label>
+                        </div>
+                        <p id="pForPosition" style="color: red; margin: auto; width: 75%;"></p>
+
+                    </div>
+
+                    <!-- Address -->
+                    <div class="fieldText address">
+                        <label for="addr"><b>ADDRESS</b>
+                            <span id = "addressError" style="float: right; color:red">
+                            </span>
+                        </label>
+                        <textarea id="addr" placeholder="Type address" value ="" name="address" style="width: 100%; height: 75%;"></textarea>
+                    </div>
+
+                    <!-- PinCode -->
+                    <div class="fieldText pincode">
+                        <label for="pin"><b>PINCODE</b></label>
+                        <span id = "pinError" style="float: right; color:red"></span>
+                        <input type="text" id="pin" value ="" placeholder="Enter  your Pin code" name="pin"></input>
+                    </div>
+                </div>
+
+                <!---------------------------------------->
+                
+                <div id="s4">
+
+                    <!-- Country -->
+                    <div class="fieldText country">
+                        <label for="cntry"><b>COUNTRY<sup class="astr">*</sup></b>
+                        </label>
+                        <select id="cntry" class="valid" name="country">
+                            <option value="" selected="selected">Select a country</option>
+                        </select>
+                    </div>
+                    
+                    <!-- State -->
+                    <div class="fieldText state">
+                        <label for="st"><b>STATE<sup class="astr">*</sup></b>
+                        </label>
+                        <select id ="st" class="valid" name="state">
+                            <option value="" selected = "selected">Select a state</option>
+                        </select>
+                    </div>
+
+                    <!-- City -->
+                    <div class="fieldText city">
+                        <label for="ct"><b>CITY<sup class="astr">*</sup></b>
+                        </label>
+                        <select id ="ct" class="valid" name="city">
+                            <option value="" selected= "selected">Select a city</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="fieldText submitBtn" align = "center" valign="top">
+                        <button type="button" id = "save" class="submit">Phewww!! Let's Submit</button>
+                        <span id = "status" style = "color:blue"></span>
+                        </div>
+        
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src = "validation.js"></script>
+    <script src = "pipe.js"></script>
+
+</body>
+</html>

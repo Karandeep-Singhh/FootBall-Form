@@ -1,0 +1,20 @@
+<html>
+<body>
+<h2>Hello Heroku!</h2>
+<button id = "btn">this!!</button>
+<script>
+    btn.addEventListener('click', function(){
+        var request = new XMLHttpRequest();
+        request.open('get', "/hello",true);
+        request.onreadystatechange = function() {
+            if(request.readyState === XMLHttpRequest.DONE){
+                if((request.status === 0) || (request.status >= 200 && request.status < 400)){
+                    console.log(request.responseText);
+                }
+            }
+        };
+        request.send();
+    });
+</script>
+</body>
+</html>
