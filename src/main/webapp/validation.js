@@ -134,7 +134,7 @@ function checkPin(){
         error.innerHTML = ``;
     })
 
-    if(pin.value.length === 6){
+    if(pin.value === '' || pin.value.length === 6){
         return true;
     }
     else{
@@ -405,12 +405,12 @@ function toggleButtonEvents(stat) {
 retrievalButton.addEventListener('click', function(event) {
     event.preventDefault();
 
-    var obj = {
-        "userName" : usr.value
-    }
+    // var obj = {
+    //     "userName" : usr.value
+    // }
     var request = new XMLHttpRequest();
-    var url = "/retreival";
-    request.open('post', url);
+    var url = "/goal?userName="+usr.value;
+    request.open('get', url);
     request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
     var status = request.status;
     request.onreadystatechange = function () {
@@ -425,7 +425,7 @@ retrievalButton.addEventListener('click', function(event) {
         }
         }
     };
-    request.send(JSON.stringify(obj));
+    request.send();
 
 })
 
@@ -453,60 +453,12 @@ function emptyFields(){
     fillCities();
 
 }
-// function toggleRetrieve(res){
-//     res = JSON.parse(res);
-//     if(res.userCheck){
-//         //will toggle button
-//         retrievalButton.disabled = false;
-//         usrError.innerHTML = "Retreived"
-
-//         // ;
-//     }
-//     if(!res.userCheck && usr.value===''){
-//         retrievalButton.disabled = true;
-//         usrError.innerHTML = "";
-//     }
-//     else{
-//         usrError.innerHTML = "User doesn't exists"
-//         retrievalButton.disabled = true;
-//         emptyFields(res);
-//         toggleButtonEvents(false);
-//     }
-// }
 
 function checkAvailability(){
     usrError.innerHTML = "";
     if(usr.value === ""){
 
         retrievalButton.disabled = true;
-
-    //     var obj = {
-    //         "userName" : usr.value
-    //     }
-    //     var request = new XMLHttpRequest();
-    //     var url = "/userCheck";
-    //     request.open('post', url);
-    //     request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
-    //     var status = request.status;
-    //     request.onreadystatechange = function () {
-    //         if(request.readyState === XMLHttpRequest.DONE) {
-    //         var status = request.status;
-    //         if (status === 0 || (status >= 200 && status < 400)) {
-    //             console.log(request.responseText);
-    //             // responseObj(request.responseText);
-    //             // var res = JSON.parse(request.responseText);
-    //             toggleRetrieve(request.responseText);
-
-    //         } else {
-    //             console.log("request failed");
-    //         }
-    //         }
-    //     };
-    //     request.send(JSON.stringify(obj));
-    //     }
-    // else{
-    //     usrError.innerHTML = "Invalid Format";
-    // }
     }else{
         retrievalButton.disabled = false;
     }
