@@ -1,6 +1,8 @@
-package footballFunctionality;
+package footballFunctionality.dao;
 
 import java.sql.*;
+//import footballFunctionality.Player;
+import footballFunctionality.model.Player;
 
 public class FootBallDao {
     private Connection con = null;

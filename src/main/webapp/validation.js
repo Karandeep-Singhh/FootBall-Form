@@ -402,32 +402,7 @@ function toggleButtonEvents(stat) {
     }
 }
 
-retrievalButton.addEventListener('click', function(event) {
-    event.preventDefault();
 
-    // var obj = {
-    //     "userName" : usr.value
-    // }
-    var request = new XMLHttpRequest();
-    var url = "/goal?userName="+usr.value;
-    request.open('get', url);
-    request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
-    var status = request.status;
-    request.onreadystatechange = function () {
-        if(request.readyState === XMLHttpRequest.DONE) {
-        var status = request.status;
-        if (status === 0 || (status >= 200 && status < 400)) {
-
-            fillFields(request.responseText);
-
-        } else {
-            console.log("request failed");
-        }
-        }
-    };
-    request.send();
-
-})
 
 function emptyFields(){
     fname.value = '';

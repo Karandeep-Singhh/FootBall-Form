@@ -1,30 +1,25 @@
-package footballFunctionality;
+package footballFunctionality.funtionality;
 
 import com.google.gson.Gson;
+//import footballFunctionality.FootBallDao;
+//import footballFunctionality.Player;
+//import footballFunctionality.Validation;
+import footballFunctionality.dao.FootBallDao;
+import footballFunctionality.model.Player;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+public class FootBallOperation {
 
-@WebServlet(
-        name = "MyServlet", 
-        urlPatterns = {"/goal"}
-    )
-public class FootBallServlet extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
+    public static void onPost(ServletInputStream inputStream, HttpServletResponse resp) throws IOException {
         BufferedReader br =
-                new BufferedReader(new InputStreamReader(req.getInputStream()));
+                new BufferedReader(new InputStreamReader(inputStream));
 //        System.out.println("hitt");
         String json = "";
         if(br != null){
@@ -55,13 +50,9 @@ public class FootBallServlet extends HttpServlet {
         String toBack = new Gson().toJson(player);
         out.print(toBack);
         out.flush();
-
-
     }
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-//
-        String json = req.getParameter("userName");
+    public static void onGet(String req, HttpServletResponse resp) throws IOException {
+        String json = req;
 
         Gson gson = new Gson();
         Player player =new Player();
@@ -88,11 +79,9 @@ public class FootBallServlet extends HttpServlet {
             out.flush();
         }
     }
-
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    public static void onPut(ServletInputStream inputStream, HttpServletResponse resp) throws IOException {
         BufferedReader br =
-                new BufferedReader(new InputStreamReader(req.getInputStream()));
+                new BufferedReader(new InputStreamReader(inputStream));
         String json = "";
 
         if(br != null){

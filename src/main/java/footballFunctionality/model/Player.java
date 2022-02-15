@@ -1,4 +1,4 @@
-package footballFunctionality;
+package footballFunctionality.model;
 
 public class Player {
     private String userName;

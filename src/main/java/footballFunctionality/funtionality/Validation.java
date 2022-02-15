@@ -1,4 +1,7 @@
-package footballFunctionality;
+package footballFunctionality.funtionality;
+
+//import footballFunctionality.Player;
+import footballFunctionality.model.Player;
 
 import java.util.regex.Pattern;
 

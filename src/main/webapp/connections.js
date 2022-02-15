@@ -45,9 +45,9 @@ function responseObj(object) {
     }
 
 }
-var obj = {
-    "hello" : "hi"
-}
+
+//-------Submit Request--------
+
 function submitRequest(ev){
     ev.preventDefault();
     if(findWrong()){
@@ -91,7 +91,7 @@ function submitRequest(ev){
 }
 
 
-
+//------Put Request-------
 
 function updateRequest(ev) {
     ev.preventDefault();
@@ -134,3 +134,29 @@ function updateRequest(ev) {
         request.send(JSON.stringify(jsonObject));
     }
 }
+
+//----Get request-----
+
+retrievalButton.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    var request = new XMLHttpRequest();
+    var url = "/goal?userName="+usr.value;
+    request.open('get', url);
+    request.setRequestHeader('Content-Type', 'application/json;charset=UTF=8');
+    var status = request.status;
+    request.onreadystatechange = function () {
+        if(request.readyState === XMLHttpRequest.DONE) {
+        var status = request.status;
+        if (status === 0 || (status >= 200 && status < 400)) {
+
+            fillFields(request.responseText);
+
+        } else {
+            console.log("request failed");
+        }
+        }
+    };
+    request.send();
+
+})
