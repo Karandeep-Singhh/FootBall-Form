@@ -11,11 +11,11 @@ This include Two scripts ```script.js``` and ```validation.js```
 This script sets up basic initalizations that are required like, making ```Country-State-City``` logic
 
 
-![image1](https://github.com/Karandeep-Singhh/FootBall-Form/tree/main/assets/1.png "CSC")
+![image1](/assets/1.png "CSC")
 
 
 - ```validation.js```
 
 This checks some required validations such as if 'Name' is filled or not
 
-![image1](https://github.com/Karandeep-Singhh/FootBall-Form/tree/main/assets/2.png "validation")
+![image2](/assets/2.png "validation")
