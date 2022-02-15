@@ -1,13 +1,13 @@
 package footballFunctionality.funtionality;
 
 //import footballFunctionality.Player;
-import footballFunctionality.model.Player;
+import footballFunctionality.model.PlayerInfo;
 
 import java.util.regex.Pattern;
 
 public class Validation {
 
-    public static boolean isValid(Player player) {
+    public static boolean isValid(PlayerInfo player) {
 //        boolean error = true;
 
         System.out.println("validations start");

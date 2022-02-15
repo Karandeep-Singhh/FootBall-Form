@@ -1,6 +1,6 @@
 package footballFunctionality.model;
 
-public class Player {
+public class PlayerInfo {
     private String userName;
     private String firstName;
     private String lastName;

@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 //import footballFunctionality.Player;
 //import footballFunctionality.Validation;
 import footballFunctionality.dao.FootBallDao;
-import footballFunctionality.model.Player;
+import footballFunctionality.model.PlayerInfo;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +33,7 @@ public class FootBallOperation {
         resp.setCharacterEncoding("UTF-8");
 
         Gson gson = new Gson();
-        Player player = gson.fromJson(json, Player.class);
+        PlayerInfo player = gson.fromJson(json, PlayerInfo.class);
 //        System.out.println(player.getEmail());
         FootBallDao register = new FootBallDao();
         String result = "failed";
@@ -55,7 +55,7 @@ public class FootBallOperation {
         String json = req;
 
         Gson gson = new Gson();
-        Player player =new Player();
+        PlayerInfo player =new PlayerInfo();
         player.setUserName(json);
         FootBallDao retreive = new FootBallDao();
 
@@ -63,7 +63,7 @@ public class FootBallOperation {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         if(retreive.checkUser(player)){
-            Player registeredPlayer = retreive.retreivePlayer(player.getUserName());
+            PlayerInfo registeredPlayer = retreive.retreivePlayer(player.getUserName());
             registeredPlayer.setUserCheck(true);
             String responsePlayer = new Gson().toJson(registeredPlayer);
 
@@ -92,7 +92,7 @@ public class FootBallOperation {
         }
 
         Gson gson = new Gson();
-        Player player = gson.fromJson(json, Player.class);
+        PlayerInfo player = gson.fromJson(json, PlayerInfo.class);
 
         FootBallDao update = new FootBallDao();
 

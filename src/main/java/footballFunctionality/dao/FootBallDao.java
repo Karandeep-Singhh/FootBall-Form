@@ -2,7 +2,7 @@ package footballFunctionality.dao;
 
 import java.sql.*;
 //import footballFunctionality.Player;
-import footballFunctionality.model.Player;
+import footballFunctionality.model.PlayerInfo;
 
 public class FootBallDao {
     private Connection con = null;
@@ -34,7 +34,7 @@ public class FootBallDao {
         return con;
     }
 
-    public boolean checkUser(Player player){
+    public boolean checkUser(PlayerInfo player){
         con = getConnection();
         try {
             statement = con.createStatement();
@@ -54,7 +54,7 @@ public class FootBallDao {
 
     }
 
-    public String insert(Player player) {
+    public String insert(PlayerInfo player) {
 //		loadDriver(dbdriver);
         con = getConnection();
         String result = "success";
@@ -94,9 +94,9 @@ public class FootBallDao {
 
     }
 
-    public Player retreivePlayer(String referedUser){
+    public PlayerInfo retreivePlayer(String referedUser){
         con = getConnection();
-        Player player = new Player();
+        PlayerInfo player = new PlayerInfo();
         String query = "SELECT * FROM FootballPlayers WHERE username = '"+referedUser+"'";
 
         try{
@@ -128,7 +128,7 @@ public class FootBallDao {
         return player;
     }
 
-    public String updateData(Player player){
+    public String updateData(PlayerInfo player){
         con = getConnection();
         String result = "failed";
 
