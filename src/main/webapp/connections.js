@@ -25,24 +25,26 @@ function getPosition(){
 }
 
 function responseObj(object) {
-    responseObject = JSON.parse(object);
+    object = JSON.parse(object);
     // console.log(responseObject);
     // console.log(responseObject.email);
-    if(responseObject.status === "success"){
+    console.log(object.status);
+    if(object.status === "success"){
         saveStatus.innerHTML = "Saved!!";
     }
-    if(responseObject.status === "failed"){
+    if(object.status === "failed"){
         findWrong();
+        saveStatus.innerHTML = "Failed!";
     }
-    if(responseObject.status === "updated"){
+    if(object.status === "updated"){
         saveStatus.innerHTML = "Updated!";
     }
-    else if(responseObject.status === "userexists"){
+    if(object.status === "userexists"){
         usrError.innerHTML = "User Already Exists!";
     }
-    else{
-        saveStatus.innerHTML = responseObject.status;
-    }
+    // else{
+    //     saveStatus.innerHTML = object.status;
+    // }
 
 }
 
