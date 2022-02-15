@@ -43,7 +43,7 @@ public class FootBallOperation {
                 result = register.insert(player);
                 System.out.println(result);
             } else {
-                result = "User already exist";
+                result = "userexists";
             }
         }
         player.setStatus(result);
