@@ -5,11 +5,18 @@ import footballFunctionality.model.PlayerInfo;
 
 import java.util.regex.Pattern;
 
-public class Validation {
-
-    public static boolean isValid(PlayerInfo player) {
-//        boolean error = true;
-
+/**
+ * For validating the fields
+ */
+public class Validation
+{
+    /**
+     * Returns 'true' if the validations are passed.
+     * @param player
+     * @return
+     */
+    public static boolean isValid(PlayerInfo player)
+    {
         System.out.println("validations start");
         if (!Pattern.matches("(\\w+)", player.getUserName())) return false;
         if(!Pattern.matches("^([a-zA-Z]{1,})$", player.getFirstName())) return false;
