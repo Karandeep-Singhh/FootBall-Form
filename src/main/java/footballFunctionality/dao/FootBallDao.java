@@ -17,7 +17,6 @@ public class FootBallDao {
         try {
             Class.forName(dbDriver);
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
