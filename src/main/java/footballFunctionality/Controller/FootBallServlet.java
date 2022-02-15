@@ -18,24 +18,31 @@ import java.io.PrintWriter;
         name = "MyServlet", 
         urlPatterns = {"/goal"}
     )
-public class FootBallServlet extends HttpServlet {
+public class FootBallServlet extends HttpServlet
+{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
 
         FootBallOperation.onPost(req.getInputStream(),resp);
 
     }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
 
         FootBallOperation.onGet(req.getParameter("userName"),resp);
 
     }
 
+    @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
 
         FootBallOperation.onPut(req.getInputStream(),resp);
 
