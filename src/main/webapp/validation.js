@@ -205,6 +205,8 @@ const checkName = function ()
 {
     var error = document.getElementById('fnameError');
     error.innerHTML = ``;
+    fname.classList.remove('wrong');
+    fname.style.border = '2px solid #aeaeb5'
     var flag = true;
 
     fname.addEventListener('focusin',function () {
