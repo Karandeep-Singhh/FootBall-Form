@@ -168,7 +168,6 @@ retrievalButton.addEventListener('click', function(event)
             
             if (status === 0 || (status >= 200 && status < 400)) 
             {
-                console.log(request.responseText);
                 fillFields(request.responseText);
 
             }
