@@ -4,7 +4,12 @@ A form for Football recruitment registration.
 - HTML
 - CSS
 - JavaScript
-## Setup
+- Java
+- Java Servlets
+## Flow of Application
+
+![image1](/assets/3.png "flow")
+
 This include Two scripts ```script.js``` and ```validation.js```
 - ```script.js```
 
