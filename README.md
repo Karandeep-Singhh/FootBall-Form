@@ -8,7 +8,7 @@ A form for Football recruitment registration.
 - Java Servlets
 ## Flow of Application
 
-![image1](/assets/3.png "flow")
+![image3](/assets/3.png "flow")
 
 This include Two scripts ```script.js``` and ```validation.js```
 - ```script.js```
