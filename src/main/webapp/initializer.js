@@ -1,4 +1,5 @@
 
+//JSON for country-state-cities
 var stateObjs = {
     "India": {
         "Delhi" : ["New Delhi", "North Delhi"],
@@ -13,6 +14,7 @@ var stateObjs = {
         "Zealand" : ["Faxe","Greve"]
     }
 };
+
 var cntry = document.querySelector('#cntry'),
     states = document.querySelector('#st'),
     cities = document.querySelector('#ct');
@@ -20,9 +22,10 @@ var cntry = document.querySelector('#cntry'),
 var isMail = document.getElementById('mailEnable');
 var mailField = document.getElementById('mail');
 
-function fillStates(){
-    // states.options[0].selected = true;
-    // cities.options[0].selected = true;
+
+//Fills the States according to the selected country
+function fillStates()
+{
     states.length = 1;
     cities.length = 1;
 
@@ -30,33 +33,42 @@ function fillStates(){
 
 
 
-    for(var state in stateObjs[cntry.value]){
+    for(var state in stateObjs[cntry.value])
+    {
         states.options[states.options.length] = new Option(state,state);
     }
 
     checkFilled();
 }
 
-function fillCities() {
+//Fills the Cities according to the selected state
+function fillCities() 
+{
     cities.length = 1;
     if(states.selectedIndex < 1) return;
     cities[0].selected = true;
     var city = stateObjs[cntry.value][states.value];
-    for(var i = 0; i < city.length; i++){
+    for(var i = 0; i < city.length; i++)
+    {
         cities.options[cities.options.length] = new Option(city[i],city[i]);
     }
     checkFilled();
 }
 
-function emailToggle() {
-    if(isMail.checked === false) {
+//toogles the Email field
+function emailToggle() 
+{
+    if(isMail.checked === false) 
+    {
         mailField.disabled = true;
     }
-    else{
+    else
+    {
         mailField.disabled = false;
     }
 }
 
+//To set up couple of things Like some icons and some eventListener
 window.onload = function() {
     const name = document.getElementById('fname');
     name.focus();
@@ -77,31 +89,32 @@ window.onload = function() {
 
     var phoneCode = document.querySelector("#ccode");
     const imgDiv = document.querySelector(".iconPhoto");
-    phoneCode.onchange = function () {
+    phoneCode.onchange = function () 
+    {
         
         imgDiv.innerHTML = ``;
-        if(phoneCode.value == "ind"){
+        if(phoneCode.value == "ind")
+        {
             imgDiv.innerHTML = `<img src = "icons/india.png" width = "30" height="25">`;
         }
-        // console.log("changed");
-        if(phoneCode.value == "nor"){
+        if(phoneCode.value == "nor")
+        {
             imgDiv.innerHTML = `<img src = "icons/norway.png" width = "30" height="25">`;
         }
-        if(phoneCode.value == "den"){
+        if(phoneCode.value == "den")
+        {
             imgDiv.innerHTML = `<img src = "icons/denmark.png" width = "30" height="25">`;
         }
         
     }
-    if(phoneCode.value == "ind"){
+
+    if(phoneCode.value == "ind")
+    {
         imgDiv.innerHTML = `<img src = "icons/india.png" width = "30" height="25">`;
     }
+
     var isMail = document.getElementById('mailEnable');
-    // var mailField = document.getElementById('mail');
 
-    isMail.addEventListener('change', emailToggle)
-    // isMail.onchange = emailToggle();
-// states.onchange();
-saveButton.addEventListener('click', submitRequest);
+    isMail.addEventListener('change', emailToggle);
+    saveButton.addEventListener('click', submitRequest);
 }
-
-// export states,city;

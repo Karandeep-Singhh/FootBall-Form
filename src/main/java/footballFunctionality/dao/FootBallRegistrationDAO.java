@@ -1,7 +1,6 @@
 package footballFunctionality.dao;
 
 import java.sql.*;
-//import footballFunctionality.Player;
 import footballFunctionality.model.PlayerInfo;
 
 public class FootBallRegistrationDAO
@@ -140,7 +139,7 @@ public class FootBallRegistrationDAO
         try
         {
             statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery(retreiveUserQuery);
+            ResultSet resultSet = statement.executeQuery(retreiveUserQuery+"'"+referedUser+"'");
 
             while (resultSet.next())
             {
@@ -160,14 +159,15 @@ public class FootBallRegistrationDAO
                 player.setCity(String.valueOf(resultSet.getString("city")));
             }
             player.setStatus("success");
+            return player;
         }
         catch (SQLException e)
         {
             e.printStackTrace();
             player.setStatus("failed");
+            return player;
         }
 
-        return player;
     }
 
     /**

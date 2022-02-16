@@ -1,9 +1,6 @@
 package footballFunctionality.funtionality;
 
 import com.google.gson.Gson;
-//import footballFunctionality.FootBallDao;
-//import footballFunctionality.Player;
-//import footballFunctionality.Validation;
 import footballFunctionality.dao.FootBallRegistrationDAO;
 import footballFunctionality.model.PlayerInfo;
 
@@ -100,6 +97,7 @@ public class FootBallOperation {
         {
             PlayerInfo registeredPlayer = dbOperation.retreivePlayer(player.getUserName());
             registeredPlayer.setUserCheck(true);
+            registeredPlayer.setStatus("success");
 
             result = new Gson().toJson(registeredPlayer);
             System.out.println("This registered Player "+result);
@@ -151,6 +149,7 @@ public class FootBallOperation {
 
         result = "failed";
 
+        // check if user exists to updated data
         if(Validation.isValid(player))
         {
             if (dbOperation.checkUserExists(player))

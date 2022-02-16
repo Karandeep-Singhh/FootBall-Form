@@ -1,6 +1,5 @@
 package footballFunctionality.funtionality;
 
-//import footballFunctionality.Player;
 import footballFunctionality.model.PlayerInfo;
 
 import java.util.regex.Pattern;

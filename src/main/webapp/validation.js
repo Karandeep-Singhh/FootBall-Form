@@ -1,17 +1,20 @@
+const saveButton = document.getElementById('save');
 
 const usr = document.getElementById("usrname");
 const fname = document.getElementById("fname");
+const lname = document.getElementById('lname');
+
 const ccode = document.getElementById("ccode");
 const phone = document.getElementById("phone");
 const email = document.getElementById("mail");
 const ages = document.getElementById('ages');
+
 const pin = document.getElementById('pin');
+const address = document.getElementById('addr');
 
 const saveStatus = document.getElementById('status');
 const usrError = document.getElementById('invalidate');
-
 const teams = document.querySelectorAll("input[name='sTeam']");
-const lname = document.getElementById('lname');
 const phoneCode = document.getElementById('ccode');
 const positions = [];
 for(var i = 1; i <= 4; i++){
@@ -22,14 +25,30 @@ const country = document.getElementById('cntry');
 const state = document.getElementById('st');
 const city = document.getElementById('ct');
 
-// const btn = document.querySelector('.submit');
 const retrievalButton = document.querySelector('.retBtn');
-
 
 const inputs = document.querySelectorAll("input");
 
+    ///          /\     
+    ///         /  \    
+    ///        / /\ \   
+    ///       / /\ \ \  
+    ///      / /  \ \_\ 
+    //     \/_/ __ \/_/
+    //         /_/\  
+    //         \ \ \ 
+    //         / / / 
+    //         \ \ \ 
+    //         / / / 
+    //         \ \ \ 
+    //          \_\/  
+    //     Field elements
 
-const unlockButton = function(){
+
+
+//Perform checks on necessary fields in order to unlock the submit/update button
+const unlockButton = function()
+{
     var flag = true;
     var state1 = document.getElementById('st');
     var city1 = document.getElementById('ct');
@@ -52,18 +71,24 @@ const unlockButton = function(){
     return flag;
 }
 
-function checkUser(){
-    usr.addEventListener('focusin',function(){
+// Validate the "USER" field
+function checkUser()
+{
+    usr.addEventListener('focusin',function()
+    {
         usrError.innerHTML = '';
         this.classList.remove('wrong');
         this.style.border = '2px solid #aeaeb5'
-    })
+    });
+
     if(usr.value === '') return false;
 
-    if(/(\w+)/g.test(usr.value)){
+    if(/(\w+)/g.test(usr.value))
+    {
         return true;
     }
-    else{
+    else
+    {
         usrError.innerHTML = 'Invalid format';
         usr.classList.add('wrong');
         usr.style.border = '2px solid rgba(255, 0, 26, 0.77)';
@@ -71,30 +96,41 @@ function checkUser(){
     }
 }
 
-function findWrong(){
+/** Acts upon submit to check if any field data is wrong before sending the request
+ * Also perform checks when server sends an invalidation in the data.
+*/
+function findWrong()
+{
     
     var flag = true;
 
-    if(!unlockButton()){
+    if(!unlockButton())
+    {
         flag = false;
     }
-    if(!checkLastName()){
+    if(!checkLastName())
+    {
         flag = false;
     }
-    if(!checkPin()){
+    if(!checkPin())
+    {
         flag = false;
     }
-    if(!checkEmail()){
+    if(!checkEmail())
+    {
         flag = false;
     }
-    if(!addressCheck()){
+    if(!addressCheck())
+    {
         flag = false;
     }
-    console.log(flag);
+
     return flag;
 }
 
-function checkEmail() {
+// Validate the "EMAIL" field
+function checkEmail() 
+{
     var error = document.getElementById('emailError');
     email.addEventListener('focusin', function () {
         email.classList.remove('wrong');
@@ -102,31 +138,34 @@ function checkEmail() {
         error.innerHTML = ``;
     });
 
-    if(email.value === ''){
+    if(email.value === '')
+    {
         return false;
     }
 
-    if (/^[A-Za-z0-9_\-\.]+\@(\[?)[\w\-\.]+\.([a-zA-Z]{2,8}|[0-9]{1,3})(\]?)\;{0,}$/.test(email.value)){
-        
+    if (/^[A-Za-z0-9_\-\.]+\@(\[?)[\w\-\.]+\.([a-zA-Z]{2,8}|[0-9]{1,3})(\]?)\;{0,}$/.test(email.value))
+    {    
         return (true);
     }
-    else{
+
+    else
+    {
         error.innerHTML = `Invalid Email!`;
         email.classList.add('wrong');
         email.style.border = '2px solid rgba(255, 0, 26, 0.77)';
         return false;
     }
-
 }
 
+//Toggles the Submit Button
 const checkFilled = () => {
     saveButton.disabled = !unlockButton();
 };
 
-function checkPin(){
-    var error = document.getElementById('pinError');
-
-    //clean up onclicks by putting 'em in onload..
+// Validate the "PINCODE" field
+function checkPin()
+{
+    var error = document.getElementById('pinError');    
     
     pin.addEventListener('focusin', function () {
         pin.classList.remove('wrong');
@@ -134,10 +173,13 @@ function checkPin(){
         error.innerHTML = ``;
     })
 
-    if(pin.value === '' || pin.value.length === 6){
+    if(pin.value === '' || pin.value.length === 6)
+    {
         return true;
     }
-    else{
+    
+    else
+    {
         pin.classList.add('wrong');
         pin.style.border = '2px solid #aeaeb5'
         error.innerHTML = `Pin must contain '6' numbers!`;
@@ -145,24 +187,22 @@ function checkPin(){
     }
 }
 
-function isAlphabatesOnly(val){
+//Regex to check if there are onlu alphabets in a particular field
+function isAlphabatesOnly(val)
+{
 
-    if(val == undefined || val == ""){
+    if(val == undefined || val == "")
+    {
         return false;
     }
     var re = new RegExp("^([a-zA-Z]{1,})$");
-    
+
     return re.test(val);
 }
 
-// var checkUser = function(){
-//     if(usr.value != ''){
-//         return true;
-//     }
-//     return false;
-// }
-
-const checkName = function () {
+// Validate the "FIRESTNAME" field
+const checkName = function () 
+{
     var error = document.getElementById('fnameError');
     error.innerHTML = ``;
     var flag = true;
@@ -174,55 +214,68 @@ const checkName = function () {
     });
     
     var expression = /[a-zA-Z]+/;
-    if(!isAlphabatesOnly(fname.value)){
+
+    if(!isAlphabatesOnly(fname.value))
+    {
         flag = false;
         error.innerHTML = `Alphabets only!`;
         fname.classList.add('wrong');
         fname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
-        if(fname.value === ''){
+        
+        if(fname.value === '')
+        {
             error.innerHTML = `Fill Your Name!!`;
             fname.classList.add('wrong');
             fname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
         }
-        if(fname.value.match(/\s+/)){
+
+        if(fname.value.match(/\s+/))
+        {
             error.innerHTML = error.innerHTML+`No spaces!`;
             fname.classList.add('wrong');
-
-
             fname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
         }
-        if(fname.value.match(/[0-9]+/)){
+
+        if(fname.value.match(/[0-9]+/))
+        {
             error.innerHTML = `No Numbers!`;
             fname.classList.add('wrong');
             fname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
         }
     }
-    else if(fname.value.match(expression)){
+
+    else if(fname.value.match(expression))
+    {
         
-        if(fname.value.match(/\s+/)){
+        if(fname.value.match(/\s+/))
+        {
             flag = false;
             error.innerHTML = error.innerHTML+` No spaces!`;
             fname.classList.add('wrong');
-
             fname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
         }
     }
-    if(!flag){
+    if(!flag)
+    {
         saveButton.disabled = true;
     }
     return flag;
 };
 
-const checkLastName = function () {
+// Validate the "LASTNAME" field
+const checkLastName = function () 
+{
     var error = document.getElementById('lnameError');
     var expression = /[a-zA-Z]+/;
+
     lname.addEventListener('focusin', function () {
         lname.classList.remove('wrong');
         lname.style.border = '2px solid #aeaeb5'
         error.innerHTML = ``;
     });
 
-    if(!lname.value.match(expression) && lname.value != '' || lname.value.match(/[0-9]+/)){
+    if(!lname.value.match(expression) && lname.value != '' || lname.value.match(/[0-9]+/))
+    {
         error.innerHTML = `Alphabets only!`;
         lname.classList.add('wrong');
         lname.style.border = '2px solid rgba(255, 0, 26, 0.77)';
@@ -231,49 +284,57 @@ const checkLastName = function () {
     return true;
 };
 
-const checkPhone = function (){
+
+// Validate the "PHONE" field
+const checkPhone = function ()
+{
     var flag = true;
-    // console.log(phone.value);
     var error = document.getElementById('phoneError');
+
     phone.addEventListener('focusin', function () {
         phone.classList.remove('wrong');
         phone.style.border = '2px solid #aeaeb5'
         error.innerHTML = ``;
     })
-    // if(phone.value === ''){
-    //     flag = false;
-    //     error.innerHTML = `Fill your Phone Number`;
-    //     phone.classList.add('wrong');
-    //     phone.style.border = '2px solid rgba(255, 0, 26, 0.77)';
-    // }
-    if(!phone.value.match(/[0-9]+/) && phone.value != ''){
+
+    if(!phone.value.match(/[0-9]+/) && phone.value != '')
+    {
         flag = false;
         error.innerHTML = `Numerics Only!`;
         phone.classList.add('wrong');
         phone.style.border = '2px solid rgba(255, 0, 26, 0.77)';
     }
-    if(phone.value.length != 10 && phone.value.match(/[0-9]+/)){
+
+    if(phone.value.length != 10 && phone.value.match(/[0-9]+/))
+    {
         flag = false;
         error.innerHTML = `Number length is wrong!`;
         phone.classList.add('wrong');
         phone.style.border = '2px solid rgba(255, 0, 26, 0.77)';
     }
-    if(!flag){
+
+    if(!flag)
+    {
         saveButton.disabled = true;
     }
 
     return flag;
 };
 
-const addressCheck = function () {
+// Validate the "ADDRESS" field
+const addressCheck = function () 
+{
     var error = document.getElementById('addressError');
-    address.addEventListener('focusin', function () {
+    address.addEventListener('focusin', function () 
+    {
         address.classList.remove('wrong');
         address.style.border = '2px solid #aeaeb5'
         error.innerHTML = ``;
     })
+
     var pattern = /[@/=<>$]/
-    if(address.value.match(pattern)) {
+    if(address.value.match(pattern)) 
+    {
         error.innerHTML = `No Special Characters!`;
         address.classList.add('wrong');
         address.style.border = '2px solid rgba(255, 0, 26, 0.77)';
@@ -282,30 +343,39 @@ const addressCheck = function () {
     return true;
 };
 
+// Validate if "TEAM" is chosen
 const checkTeam = () => {
 
     var toggle = false;
-    for(var i = 0; i < teams.length ; i++){
-        if(teams[i].checked === true){
+    for(var i = 0; i < teams.length ; i++)
+    {
+        if(teams[i].checked === true)
+        {
             toggle = true;
     
         }
     }
-    if(!toggle){
+    if(!toggle)
+    {
         saveButton.disabled = true;
     }
 
     return toggle;
 }
 
+// Validate if "POSTION" is chosen
 const checkPosition = () => {
     var isChecked = false;
-    for(var i = 0; i < positions.length; i++) {
-        if(positions[i].checked === true){
+
+    for(var i = 0; i < positions.length; i++) 
+    {
+        if(positions[i].checked === true)
+        {
             isChecked = true;
         }
     }
-    if(!isChecked){
+    if(!isChecked)
+    {
         saveButton.disabled = true;
     }
 
@@ -315,37 +385,16 @@ const checkPosition = () => {
 
 
 
-ccode.addEventListener('change', checkFilled);
-email.addEventListener('focusout', checkFilled);
-ages.addEventListener('change', checkFilled);
-city.addEventListener('change', checkFilled);
-fname.addEventListener('focusout', checkFilled);
-usr.addEventListener('focusout', checkFilled);
-
-
-for (var i = 0 ; i< teams.length ; i++){
-    teams[i].addEventListener('change', checkFilled);
-}
-for(var i = 0 ; i< positions.length ; i++){
-    positions[i].addEventListener('change', checkFilled);
-}
-
-
-lname.addEventListener('focusout', checkLastName);
-
-phone.addEventListener('focusout', checkFilled);
-
-const address = document.getElementById('addr');
-
-address.addEventListener('focusout', addressCheck);
-
-function fillFields(player) {
+//Fill the fields after the retrival response is captured
+function fillFields(player) 
+{
     player = JSON.parse(player);
-
-    if(player.userCheck) {
+    
+    //checks if response contains a key so that it can be filled to the fields
+    if(player.userCheck && player.status === 'success') 
+    {
         
         usrError.innerHTML = "";
-
 
         usr.value = player.userName;
         fname.value = player.firstName;
@@ -357,54 +406,58 @@ function fillFields(player) {
         ages.selectedIndex = parseInt(player.ageGroup);
         teams[parseInt(player.team)-1].checked = true;
 
-        for(var i = 0; i < positions.length; i++) {
+        for(var i = 0; i < positions.length; i++)
+        {
             positions[i].checked = false
         }
 
         positions[parseInt(player.position)-1].checked = true;
         address.value = player.address;
         pin.value = player.pinCode;
+
         country.selectedIndex = parseInt(player.country);
         fillStates(country);
         state.selectedIndex = parseInt(player.state);
-        // console.log(player.state+" - "+state.selectedIndex);
         fillCities(state);
         city.selectedIndex = parseInt(player.city);
 
         document.getElementById('mailEnable').checked = true;
+
         emailToggle();
-        // toggleButtonEvents(true);
         toggleButtonEvents(true);
         checkFilled();
     }
-    else{
-        usrError.innerHTML = "User doesn't exists";
+    else
+    {
+        usrError.innerHTML = "Failed/User doesn't exists";
         toggleButtonEvents(false);
         emptyFields();
     }
 
 }
 
-function toggleButtonEvents(stat) {
+//Toggles the buttons events between 'submit' and 'update'
+function toggleButtonEvents(stat) 
+{
     
-    if(stat){
+    if(stat)
+    {
         saveButton.innerHTML = "Update";
         saveButton.removeEventListener('click',submitRequest);
-
-        // console.log("changed to update");
         saveButton.addEventListener('click', updateRequest);
     }
-    else{
+    else
+    {
         saveButton.innerHTML = "Phewww!! Let's Submit";
         saveButton.removeEventListener('click',updateRequest);
-
         saveButton.addEventListener('click', submitRequest)
     }
 }
 
 
-
-function emptyFields(){
+//Empty the fields when called
+function emptyFields()
+{
     fname.value = '';
     lname.value = '';
     phoneCode.selectedIndex = 1;
@@ -412,11 +465,13 @@ function emptyFields(){
     email.value = '';
     ages.selectedIndex = 0;
     
-    for(var i = 0; i < teams.length ; i++){
+    for(var i = 0; i < teams.length ; i++)
+    {
         teams[i].checked = false;
     }
 
-    for(var i = 0; i < positions.length; i++) {
+    for(var i = 0; i < positions.length; i++) 
+    {
         positions[i].checked = false
     }
     document.getElementById('mailEnable').checked = false;
@@ -429,14 +484,47 @@ function emptyFields(){
 
 }
 
-function checkAvailability(){
+//Toggles the 'Retreive' button
+function checkAvailability()
+{
+    checkFilled();
     usrError.innerHTML = "";
-    if(usr.value === ""){
-
+    if(usr.value === "")
+    {
         retrievalButton.disabled = true;
-    }else{
+    }
+    else
+    {
         retrievalButton.disabled = false;
     }
 }
 
+//        _               _   
+//       /_/\ Event     /\_\ 
+//       \ \ \Listeners/ / /    
+//        \ \ \       / / /     
+//         \ \ \     / / /      
+//          \ \ \   / / /       
+//           \ \ \ / / /        
+//            \_\/ \/_/         
+                          
+ccode.addEventListener('change', checkFilled);
+email.addEventListener('focusout', checkFilled);
+ages.addEventListener('change', checkFilled);
+city.addEventListener('change', checkFilled);
+fname.addEventListener('focusout', checkFilled);
 usr.addEventListener('focusout', checkAvailability);
+
+for (var i = 0 ; i< teams.length ; i++)
+{
+    teams[i].addEventListener('change', checkFilled);
+}
+
+for(var i = 0 ; i< positions.length ; i++)
+{
+    positions[i].addEventListener('change', checkFilled);
+}
+
+lname.addEventListener('focusout', checkLastName);
+phone.addEventListener('focusout', checkFilled);
+address.addEventListener('focusout', addressCheck);
