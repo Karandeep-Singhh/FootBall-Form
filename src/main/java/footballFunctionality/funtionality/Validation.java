@@ -16,7 +16,6 @@ public class Validation
      */
     public static boolean isValid(PlayerInfo player)
     {
-        System.out.println("validations start");
         if (!Pattern.matches("(\\w+)", player.getUserName())) return false;
         if(!Pattern.matches("^([a-zA-Z]{1,})$", player.getFirstName())) return false;
         if(player.getLastName().length() > 0 && !(Pattern.matches("[a-zA-Z\\s]+",player.getLastName()))) return false;
@@ -36,7 +35,6 @@ public class Validation
         if(Integer.parseInt(player.getCountry()) < 1) return false;
         if(Integer.parseInt(player.getState()) < 1) return false;
         if(Integer.parseInt(player.getCity()) < 1) return false;
-        System.out.println("validations done");
         return true;
     }
 }

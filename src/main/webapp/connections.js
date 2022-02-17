@@ -53,6 +53,7 @@ function responseObj(object)
     if(object.status === "userexists")
     {
         usrError.innerHTML = "User Already Exists!";
+        saveStatus.innerHTML = "Failed!";
     }
 }
 
@@ -71,7 +72,7 @@ function submitRequest(ev)
             "lastName" : lname.value,
             "phoneCode" : phoneCode.selectedIndex,
             "phoneNumber" : phone.value,
-            "email" : email.value,
+            "email" : email.value.toLowerCase(),
             "ageGroup" : ages.selectedIndex,
             "team" : getTeam(),
             "position" : getPosition(),
@@ -117,7 +118,7 @@ function updateRequest(ev)
             "lastName" : lname.value,
             "phoneCode" : phoneCode.selectedIndex,
             "phoneNumber" : phone.value,
-            "email" : email.value,
+            "email" : email.value.toLowerCase(),
             "ageGroup" : ages.selectedIndex,
             "team" : getTeam(),
             "position" : getPosition(),

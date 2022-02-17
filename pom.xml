@@ -62,7 +62,7 @@
                         </program>
                     </programs>
                 </configuration>
-                <executions>
+                <executions>l
                     <execution>
                         <phase>package</phase>
                         <goals>

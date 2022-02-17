@@ -100,13 +100,11 @@ public class FootBallOperation {
             registeredPlayer.setStatus("success");
 
             result = new Gson().toJson(registeredPlayer);
-            System.out.println("This registered Player "+result);
         }
         else
         {
             player.setUserCheck(false);
             result = new Gson().toJson(player);
-            System.out.println("this retreive servlet :" + result);
         }
 
         out.print(result);
@@ -155,7 +153,6 @@ public class FootBallOperation {
             if (dbOperation.checkUserExists(player))
             {
                 result = dbOperation.updateData(player);
-                System.out.println(result);
             }
             else
             {

@@ -299,6 +299,8 @@ const checkPhone = function ()
         error.innerHTML = ``;
     })
 
+    if(phone.value === '') return false;
+
     if(!phone.value.match(/[0-9]+/) && phone.value != '')
     {
         flag = false;
