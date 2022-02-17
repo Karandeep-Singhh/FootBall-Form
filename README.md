@@ -6,6 +6,42 @@ A form for Football recruitment registration.
 - JavaScript
 - Java
 - Java Servlets
+
+## Requirements
+
+- Java JDK v11.0.2 or higher
+- Microsoft SQL Server 2017 or higher
+
+## SETUP
+
+### Setup by IntelliJ
+- Clone the repository
+````
+git clone https://github.com/Karandeep-Singhh/FootBall-Form.git
+````
+- Open the repo or cloned folder in IntelliJ as a project
+- Let the Dependencies resolve
+- You are good to go!!
+
+
+### Setup using Build
+
+- Clone the repository
+- Make sure you have <a href="https://maven.apache.org/download.cgi">Maven</a>
+- Add Maven's ```bin``` folder path to environment variables
+- Check Maven installation
+````
+mvn -v
+````
+![mvn-v](/assets/mvn-version.png)
+
+
+- Open the command prompt inside the cloned repository and type following commands
+````
+mvn package
+````
+- Upon successful build goto ```target\bin``` and run the batch file
+
 ## Flow of Application
 
 ![image3](/assets/3.png "flow")
