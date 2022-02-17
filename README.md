@@ -33,7 +33,7 @@ git clone https://github.com/Karandeep-Singhh/FootBall-Form.git
 ````
 mvn -v
 ````
-![mvn-v](/assets/mvn-version)
+![mvn-v](/assets/mvn-version.png)
 
 
 - Open the command prompt inside the cloned repository and type following commands
