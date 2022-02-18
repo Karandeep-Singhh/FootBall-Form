@@ -14,6 +14,29 @@ A form for Football recruitment registration.
 
 ## SETUP
 
+### Set-ups todo in SQL Server 
+- Create a database named _Football_
+- Create a Table using following query:
+````
+CREATE TABLE FootballPlayers(
+	username VARCHAR(20) PRIMARY KEY,
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50),
+	phonecode VARCHAR(5) NOT NULL,
+	phone VARCHAR(20) NOT NULL,
+	age VARCHAR(20) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	team INT NOT NULL,
+	position INT NOT NULL,
+	paddress VARCHAR(50),
+	pin VARCHAR(10),
+	country INT NOT NULL,
+	states INT NOT NULL,
+	city INT NOT NULL
+);
+````
+
+
 ### Setup by IntelliJ
 - Clone the repository
 ````
