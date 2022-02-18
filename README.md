@@ -41,9 +41,9 @@ mvn -v
 mvn package
 ````
 - Upon successful build goto ```target\bin``` and run the batch file
+- Now, goto a web browser and type in url _localhost:8080/FootballRegistrationForm.html_
 
 ## Flow of Application
-
 ![image3](/assets/3.png "flow")
 
 This include Two scripts ```script.js``` and ```validation.js```
