@@ -397,7 +397,7 @@ function fillFields(player)
     //checks if response contains a key so that it can be filled to the fields
     if(player.userCheck && player.status === 'success') 
     {
-        
+        saveStatus.innerHTML = "";
         usrError.innerHTML = "";
 
         usr.value = player.userName;
