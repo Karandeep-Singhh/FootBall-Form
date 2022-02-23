@@ -57,11 +57,14 @@ public class FootBallOperation {
         if(Validation.isValid(player))
         {
             // Checks if user/player exists in database to ensure a new entry
-            if (dbOperation.checkUserExists(player))
+            if (!dbOperation.checkUserExists(player))
+            {
+                result = dbOperation.registerNewPlayer(player);
+            }
+            else
             {
                 result = "userexists";
             }
-            result = dbOperation.registerNewPlayer(player);
         }
 
         player.setStatus(result);
