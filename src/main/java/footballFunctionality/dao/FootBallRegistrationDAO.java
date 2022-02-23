@@ -5,7 +5,7 @@ import footballFunctionality.model.PlayerInfo;
 
 public class FootBallRegistrationDAO
 {
-    private Connection con = null;
+
     private Statement statement = null;
     private ResultSet resultSet = null;
     private String dburl = "jdbc:sqlserver://localhost:1433;databaseName=Football;trustServerCertificate=true;";
@@ -50,6 +50,8 @@ public class FootBallRegistrationDAO
         }
         return con;
     }
+    //Creating a global object for connection to database
+    private Connection con = getConnection();
 
     /**
      * Returns 'true' if a registered player is found.
@@ -58,7 +60,6 @@ public class FootBallRegistrationDAO
      */
     public boolean checkUserExists(PlayerInfo player)
     {
-        con = getConnection();
         try
         {
             statement = con.createStatement();
@@ -88,7 +89,6 @@ public class FootBallRegistrationDAO
      */
     public String registerNewPlayer(PlayerInfo player) {
 
-        con = getConnection();
 
         if(!checkUserExists(player)) {
 
@@ -133,7 +133,7 @@ public class FootBallRegistrationDAO
      * @return
      */
     public PlayerInfo retreivePlayer(String referedUser){
-        con = getConnection();
+
         PlayerInfo player = new PlayerInfo();
 
         try
@@ -177,7 +177,6 @@ public class FootBallRegistrationDAO
      */
     public String updateData(PlayerInfo player)
     {
-        con = getConnection();
 
         try{
 
